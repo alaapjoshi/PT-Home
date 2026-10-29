@@ -75,7 +75,7 @@ npm install
 
 Flash the firmware:
 
-1. Open `firmware/feather_dual_mpu6050/feather_dual_mpu6050.ino` in the Arduino IDE.
+1. Open `firmware/firmware.ino` in the Arduino IDE.
 2. Select **Tools > Board > Adafruit Feather nRF52832** and the matching port, then upload.
 3. Open the Serial Monitor at 115200 baud. You should see `MPU 0x68: OK, MPU 0x69: OK` followed by streaming CSV lines. If a sensor shows `MISSING`, check its AD0, power, and SDA/SCL wires.
 
@@ -100,7 +100,7 @@ Open http://127.0.0.1:5173 in Chrome or Edge, then:
 ~~~text
 PT-Home/
   firmware/
-    feather_dual_mpu6050/      # Arduino sketch: reads both IMUs, streams CSV over BLE
+    firmware.ino               # Arduino sketch: reads both IMUs, streams CSV over BLE
   web/
     src/
       App.jsx                  # BLE connection, rep counter, recording, UI
