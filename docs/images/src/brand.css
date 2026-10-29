@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+:root { --bg:#0F172A; --card:#1E293B; --text:#F8FAFC; --muted:#94A3B8; --accent:#38BDF8; --line:#334155; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html, body { background:var(--bg); color:var(--text); font-family:Inter, system-ui, sans-serif; overflow:hidden; }
+.card { background:var(--card); border-radius:16px; box-shadow:0 20px 50px rgba(0,0,0,.35); }
+.chip { display:inline-block; color:var(--accent); border:1.5px solid rgba(56,189,248,.45); background:rgba(56,189,248,.08); border-radius:999px; font-weight:600; }
+.browser { background:var(--card); border-radius:16px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.45); border:1px solid var(--line); }
+.browser .bar { height:40px; display:flex; align-items:center; gap:8px; padding:0 16px; background:#172033; border-bottom:1px solid var(--line); }
+.browser .bar i { width:12px; height:12px; border-radius:50%; background:#475569; display:block; }
+.browser .bar .url { margin-left:16px; flex:1; height:24px; border-radius:6px; background:var(--bg); color:var(--muted); font-size:13px; display:flex; align-items:center; padding:0 12px; }
+.browser img { display:block; width:100%; }
+.g { width:1600px; height:1000px; padding:64px; display:flex; flex-direction:column; }
+.g h1 { font-size:44px; font-weight:700; letter-spacing:-.02em; }
+.g .sub { font-size:22px; color:var(--muted); margin-top:10px; }
+.mono { font-family:'JetBrains Mono', ui-monospace, monospace; }

@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="brand.css">
+<style>
+.main { flex:1; display:flex; flex-direction:column; justify-content:center; }
+.row { display:flex; gap:28px; }
+.col { flex:1; padding:36px 32px; display:flex; flex-direction:column; }
+.n { width:40px; height:40px; border-radius:50%; background:rgba(56,189,248,.12); color:var(--accent); font-weight:700; font-size:18px; display:flex; align-items:center; justify-content:center; }
+h3 { font-size:26px; font-weight:700; margin-top:20px; }
+p { font-size:18px; line-height:1.5; color:var(--muted); margin-top:12px; }
+.eq { margin-top:auto; min-height:96px; background:var(--bg); border-radius:12px; padding:20px; font-size:17px; line-height:1.7; color:var(--text); }
+.eq b { color:var(--accent); font-weight:500; }
+svg text { font-family:Inter, system-ui, sans-serif; }
+</style></head><body class="g">
+<h1>How the angle and reps are computed</h1>
+<div class="sub">Three steps, run on every sample in the browser.</div>
+<div class="main"><div class="row">
+  <div class="col card"><div class="n">1</div><h3>Fuse each sensor</h3>
+    <p style="margin-bottom:28px">The gyroscope is smooth but drifts. The accelerometer is noisy but stable. A complementary filter blends them.</p>
+    <div class="eq mono">pitch = <b>0.98</b> × (pitch + gyro·dt)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ <b>0.02</b> × accelPitch</div></div>
+  <div class="col card"><div class="n">2</div><h3>Compare the two</h3>
+    <p style="margin-bottom:28px">The joint angle is the difference between the two pitches, minus the straight-arm baseline set at calibration.</p>
+    <div class="eq mono">Δ = pitchB − pitchA<br>angle = |Δ − baseline|, <b>0°–145°</b></div></div>
+  <div class="col card"><div class="n">3</div><h3>Count reps</h3>
+    <p style="margin-bottom:28px">Hysteresis stops jitter from double counting. A rep counts above 65°, and the counter re-arms below 25°.</p>
+    <svg viewBox="0 0 380 200" style="margin-top:auto">
+      <rect width="380" height="200" rx="12" fill="#0F172A"/>
+      <line x1="20" y1="62" x2="276" y2="62" stroke="#38BDF8" stroke-dasharray="6 6" stroke-width="2"/>
+      <text x="288" y="67" font-size="14" fill="#38BDF8">65° count</text>
+      <line x1="20" y1="142" x2="276" y2="142" stroke="#94A3B8" stroke-dasharray="6 6" stroke-width="2"/>
+      <text x="288" y="147" font-size="14" fill="#94A3B8">25° re-arm</text>
+      <path d="M20 175 C 50 175, 57 35, 84 35 S 117 175, 147 175 S 177 35, 204 35 S 237 175, 267 175" stroke="#F8FAFC" stroke-width="3" fill="none"/>
+      <circle cx="65.0" cy="62" r="7" fill="#38BDF8"/><circle cx="186.4" cy="62" r="7" fill="#38BDF8"/>
+      <text x="20" y="24" font-size="13" fill="#94A3B8">illustrative motion</text>
+    </svg></div>
+</div></div>
+</body></html>

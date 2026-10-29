@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #0b1220;
+  color: #e6efff;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+main {
+  max-width: 1280px;
+  margin: auto;
+  padding: 24px;
+}
+header h1 {
+  margin: 0;
+  font-size: 29px;
+}
+header p {
+  color: #a3b5cc;
+}
+.toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 14px 0;
+}
+button,
+select {
+  background: #1d4166;
+  border: 1px solid #497399;
+  border-radius: 9px;
+  color: #fff;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.status {
+  color: #8fd6ed;
+}
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 18px;
+}
+.viewport {
+  height: 600px;
+  border: 1px solid #24415f;
+  border-radius: 14px;
+  overflow: hidden;
+}
+aside {
+  background: #14253c;
+  border: 1px solid #24415f;
+  border-radius: 14px;
+  padding: 20px;
+}
+aside button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+}
+.metric {
+  background: #0b192d;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+}
+.metric small {
+  display: block;
+  color: #9db3cb;
+}
+.metric strong {
+  font-size: 34px;
+}
+.note {
+  color: #a6bad2;
+  font-size: 13px;
+  line-height: 1.5;
+}
+@media (max-width: 760px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .viewport {
+    height: 420px;
+  }
+  main {
+    padding: 12px;
+  }
+}

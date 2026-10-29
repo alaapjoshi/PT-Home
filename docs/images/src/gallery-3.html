@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="brand.css">
+<style>
+.main { flex:1; display:flex; flex-direction:column; justify-content:center; }
+.flow { display:flex; align-items:stretch; gap:0; }
+.step { flex:1; padding:36px 28px; min-height:300px; }
+.step .k { font-size:14px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); }
+.step h3 { font-size:26px; font-weight:700; margin-top:12px; }
+.step p { font-size:18px; line-height:1.45; color:var(--muted); margin-top:10px; }
+.arrow { width:44px; display:flex; align-items:center; justify-content:center; }
+.arrow svg { width:28px; }
+.lane { margin-top:28px; display:flex; gap:12px; font-size:15px; color:var(--muted); }
+.lane span { flex:1; text-align:center; }
+.packet { margin-top:48px; padding:32px 36px; }
+.packet .k { font-size:14px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+.packet code { display:block; margin-top:16px; font-size:22px; color:var(--text); }
+.packet code b { color:var(--accent); font-weight:500; }
+.packet p { margin-top:16px; font-size:17px; color:var(--muted); }
+</style></head><body class="g">
+<h1>From sensor to screen at 20 Hz</h1>
+<div class="sub">The firmware streams raw readings. All the math runs in the browser.</div>
+<div class="main"><div class="flow">
+  <div class="step card"><div class="k">Sense</div><h3>2 × MPU6050</h3><p>Accelerometer ±2 g and gyroscope ±250 °/s, read over I²C.</p></div>
+  <div class="arrow"><svg viewBox="0 0 28 28"><path d="M4 14h18M15 7l7 7-7 7" stroke="#38BDF8" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="step card"><div class="k">Stream</div><h3>Feather nRF52832</h3><p>Samples every 50 ms and sends a CSV line as a BLE notification.</p></div>
+  <div class="arrow"><svg viewBox="0 0 28 28"><path d="M4 14h18M15 7l7 7-7 7" stroke="#38BDF8" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="step card"><div class="k">Receive</div><h3>Web Bluetooth</h3><p>Chrome subscribes to the characteristic. No native app needed.</p></div>
+  <div class="arrow"><svg viewBox="0 0 28 28"><path d="M4 14h18M15 7l7 7-7 7" stroke="#38BDF8" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="step card"><div class="k">Estimate</div><h3>Sensor fusion</h3><p>Complementary filter per sensor, then the angle between them.</p></div>
+  <div class="arrow"><svg viewBox="0 0 28 28"><path d="M4 14h18M15 7l7 7-7 7" stroke="#38BDF8" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="step card"><div class="k">Show</div><h3>3D avatar + CSV</h3><p>React Three Fiber scene, rep counter, and session export.</p></div>
+</div>
+<div class="packet card">
+  <div class="k">BLE packet, one line per sample</div>
+  <code class="mono">millis, <b>ax1,ay1,az1</b>,gx1,gy1,gz1, <b>ax2,ay2,az2</b>,gx2,gy2,gz2</code>
+  <p>13 comma-separated values. Accelerometer in g, gyroscope in degrees per second.</p>
+</div></div>
+</body></html>
